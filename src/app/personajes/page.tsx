@@ -1,66 +1,31 @@
-import Image from "next/image";
 import { characters } from "@/data/characters";
-import type { Element, Role, Rarity } from "@/types/character";
-import Link from "next/link";
-
-const elementLabels: Record<Element, string> = {
-  caos: "Caos",
-  cosmos: "Cosmos",
-  anima: "Anima",
-  psique: "Psique",
-  lakshana: "Lakshana",
-  encantamiento: "Encantamiento",
-};
-
-const roleLabels: Record<Role, string> = {
-  "dps-principal": "DPS Principal",
-  "dps-rafaga": "DPS de Ráfaga",
-  buffer: "Impulso de Daño",
-  tank: "Escudo",
-  healer: "Curación",
-};
-
-const rarityLabels: Record<Rarity, string> = {
-  A: "Rango A",
-  S: "Rango S",
-};
+import { CharacterCard } from "@/components/character-card";
 
 export default function PersonajesPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-8">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Personajes</h1>
+    <main className="min-h-[calc(100vh-4rem)] bg-background text-foreground">
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="mb-12 pb-8 border-b border-border">
+          <p className="text-sm font-semibold text-primary mb-2 tracking-widest uppercase">
+            Base de datos
+          </p>
+          <div className="flex items-end justify-between gap-4 flex-wrap">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-3">Personajes</h1>
+              <p className="text-muted">
+                Explora todos los personajes disponibles en Neverness to Everness.
+              </p>
+            </div>
+            <div className="text-sm text-muted">
+              <span className="font-bold text-foreground text-2xl">{characters.length}</span>{" "}
+              {characters.length === 1 ? "personaje" : "personajes"}
+            </div>
+          </div>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {characters.map((character) => (
-          <Link
-  key={character.id}
-  href={`/personajes/${character.id}`}
-  className="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-800 hover:scale-105 transition-transform block"
->
-              <div className="relative w-full h-48 bg-slate-200 dark:bg-slate-700">
-                <Image
-                  src={character.imagen}
-                  alt={character.nombre}
-                  fill
-                   quality={90}
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="p-4">
-                <h2 className="text-xl font-bold">{character.nombre}</h2>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">
-                  Elemento: {elementLabels[character.elemento]}
-                </p>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Rol: {roleLabels[character.rol]}
-                </p>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Rareza: {rarityLabels[character.rareza]}
-                </p>
-              </div>
-            </Link>
+            <CharacterCard key={character.id} character={character} />
           ))}
         </div>
       </div>

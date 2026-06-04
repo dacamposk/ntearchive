@@ -15,7 +15,7 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="w-10 h-10 rounded-lg border border-slate-300 dark:border-slate-700"
+        className="w-10 h-10 rounded-lg border border-border"
         aria-label="Cargando tema"
       />
     );
@@ -24,10 +24,10 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="w-10 h-10 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center justify-center"
+      className="w-10 h-10 rounded-lg border border-border bg-surface hover:border-primary hover:text-primary transition-colors flex items-center justify-center"
       aria-label="Cambiar tema"
     >
-      {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+      {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
     </button>
   );
 }

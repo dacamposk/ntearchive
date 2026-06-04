@@ -1,21 +1,20 @@
 import Link from "next/link";
-import { ThemeToggle } from "./theme-toggle";
 import Image from "next/image";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   return (
-    <header className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+    <header className="border-b border-border bg-surface/80 sticky top-0 z-50 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-         <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3 group">
           <Image
             src="/images/nte-logo.png"
             alt="NTEArchive logo"
-            width={50}
-            height={50}
+            width={36}
+            height={36}
             className="rounded-lg"
-            
           />
-          <span className="text-2xl font-bold text-slate-900 dark:text-white">
+          <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
             NTEArchive
           </span>
         </Link>
@@ -23,19 +22,19 @@ export function Header() {
         <nav className="flex items-center gap-6">
           <Link
             href="/personajes"
-            className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+            className="text-sm text-muted hover:text-foreground transition-colors font-medium"
           >
             Personajes
           </Link>
           <Link
             href="/tier-list"
-            className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+            className="text-sm text-muted hover:text-foreground transition-colors font-medium"
           >
             Tier List
           </Link>
           <Link
             href="/guias"
-            className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+            className="text-sm text-muted hover:text-foreground transition-colors font-medium"
           >
             Guías
           </Link>
